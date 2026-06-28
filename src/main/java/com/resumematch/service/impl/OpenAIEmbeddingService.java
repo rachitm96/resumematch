@@ -34,5 +34,6 @@ public class OpenAIEmbeddingService implements EmbeddingService {
         }
         return embeddingArray;
     }
+
     record EmbeddingRequest(String model, String input) {}
 }
