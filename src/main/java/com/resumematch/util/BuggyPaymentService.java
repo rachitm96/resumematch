@@ -41,7 +41,7 @@ public class BuggyPaymentService {
     // Problem: DB query fires once per order inside the loop.
     //          With 500 orders → 501 DB round trips.
     //          At scale: DB connection pool exhaustion, timeouts.
-    // Fix: use itemRepo.findByOrderIdIn(orderIds) and group in memory.
+    // Fix:use itemRepo.findByOrderIdIn(orderIds) and group in memory.
     // ============================================================
     public List<Order> getOrdersWithItems(List<String> orderIds) {
         List<Order> orders = orderRepo.findAllById(orderIds);
