@@ -2,6 +2,7 @@ package com.resumematch.entity;
 
 import jakarta.persistence.*;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +15,8 @@ public class Resume {
 
     private String candidateName;
     private String email;
+    private String phone;
+    private String currentCompany;
 
     @Column(columnDefinition = "TEXT")
     private String rawText;
@@ -22,6 +25,9 @@ public class Resume {
     private float[] embedding; // pgvector compatible
 
     private Instant createdAt = Instant.now();
+
+    @ElementCollection
+    private List<String> skills;
 
     // Constructors
     public Resume() {}
@@ -59,6 +65,22 @@ public class Resume {
         this.rawText = rawText;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCurrentCompany() {
+        return currentCompany;
+    }
+
+    public void setCurrentCompany(String currentCompany) {
+        this.currentCompany = currentCompany;
+    }
+
     public float[] getEmbedding() {
         return embedding;
     }
@@ -73,5 +95,13 @@ public class Resume {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
     }
 }
