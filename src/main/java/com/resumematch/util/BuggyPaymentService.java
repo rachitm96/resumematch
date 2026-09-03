@@ -165,6 +165,5 @@ public class BuggyPaymentService {
         Payment charge(double amount, String cardToken);
         void refund(String paymentId);
     }
-
 }
 
